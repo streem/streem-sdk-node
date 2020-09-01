@@ -1,0 +1,42 @@
+# Embedded SSO Example
+
+The Embedded SSO app demonstrates how to use the Streem SDK to generate a 
+token that will automatically log your users into the Streem Web portal.
+
+## Server
+First, create your `server/.env` file:
+
+```
+cd server
+cp .env.template .env
+``` 
+
+Then edit the `.env` file with your API Key ID and Secret
+
+Next, install dependencies and start the server:
+
+```
+cd server
+yarn && yarn start
+```
+
+
+## Client
+
+With the server started above, you can simply install dependencies and start the client:
+ 
+```
+cd client
+yarn && yarn start
+```
+
+This will open your web browser to the example app.  Here you can specify the user details that
+will login to Streem.  Normally you would get these values from your logged-in user of your app,
+but this example demonstrates the functionality without the need to authenticate first.
+
+In production of course, you would only want to generate tokens for users that were authenticated
+with your backend.
+
+## License
+
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
