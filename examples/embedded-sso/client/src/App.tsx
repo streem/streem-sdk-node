@@ -57,9 +57,11 @@ export default function App() {
     const [name, setName] = useState("Joe S.");
     const [email, setEmail] = useState("joe@example.com");
     const [avatarUrl, setAvatarUrl] = useState("https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/99/UP0102-CUSA03962_00-AV00000000000012/0/image?_version=00_09_000&platform=chihiro&bg_color=000000&opacity=100&w=720&h=720");
+    const [companyCode, setCompanyCode] = useState("your-company");
+    const [apiEnvironment, setApiEnvironment] = useState("sandbox");
     const [requesting, setRequesting] = useState(true);
 
-    let defaultIframeSource = 'https://sean2.swa.sandbox.streem.cloud/logout-success';
+    let defaultIframeSource = `https://${companyCode}.swa.${apiEnvironment}.streem.cloud/logout-success`;
     const [iframeSource, setIframeSource] = useState(defaultIframeSource);
 
     const handleSubmit = async (e: FormEvent) => {
@@ -72,10 +74,10 @@ export default function App() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ userId, name, email, avatarUrl })
+            body: JSON.stringify({ userId, name, email, avatarUrl, apiEnvironment })
         });
         const json = await response.json();
-        setIframeSource(`https://sean2.swa.sandbox.streem.cloud#token=${json.token}`);
+        setIframeSource(`https://${companyCode}.swa.${apiEnvironment}.streem.cloud#token=${json.token}`);
         setRequesting(false);
     };
 
@@ -142,6 +144,28 @@ export default function App() {
                             helperText="The full URL to the avatar for this user"
                             value={avatarUrl}
                             onChange={e => setAvatarUrl(e.target.value)}
+                        />
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            fullWidth
+                            id="companyCode"
+                            label="Company Code"
+                            name="companyCode"
+                            helperText="Your company code in Streem, which is the first part of the URL."
+                            value={companyCode}
+                            onChange={e => setCompanyCode(e.target.value)}
+                        />
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            fullWidth
+                            id="apiEnvironment"
+                            label="API Environment"
+                            name="apiEnvironment"
+                            helperText="Optionally change this to a different API environment (such as prod-us)"
+                            value={apiEnvironment}
+                            onChange={e => setApiEnvironment(e.target.value)}
                         />
                         <Button
                             type="submit"
