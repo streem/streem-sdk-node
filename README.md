@@ -1,7 +1,6 @@
 # streem-sdk-node
 
-Documentation, Examples, and Issue Tracking for the Streem SDK for Node
-
+Server-side node library for interacting with the Streem API, and generation of Streem Tokens for use in client SDKs or Embedded SSO.
 
 ## Installation
 
@@ -31,9 +30,9 @@ Then initialize the library with your API Key ID and Secret:
     Streem.init(apiKeyId, apiKeySecret)
 ```
 
-### Embedded SSO Token
+### Streem Tokens
 
-To create an Embedded SSO Token, first create a `TokenBuilder`:
+To create a Streem Token, first create a `TokenBuilder`:
 
 ```typescript
     const builder = new Streem.TokenBuilder()
@@ -57,16 +56,26 @@ Finally, call `build()` to generate the token string:
     const token = builder.build()
 ```
 
-Now provide `token` to your front-end client.  This token can be placed on Streem URLs to automatically authenticate the user.
+#### Embedded SSO
 
-For example, to create an `iframe` to the embed page in streem, you might have:
+Embedded SSO allows you to create Streem Tokens server-side, and automatically log your users into the Streem web application.
+
+First, provide the `token` created above to your front-end browser client.  Next, place the token in the hash portion of any Streem web application URL,
+by appending `#token=...` with your token.
+
+For example, to create an `iframe` to the root page in Streem, you might have:
 
 ```html
     <iframe src="https://{company-code}.streempro.app#token={token}"/>
 ```
 
-Be sure to substitute `{company-code}` and `{token}` for the correct values. 
+Be sure to substitute `{company-code}` and `{token}` for the correct values.
+
+#### Streem Client SDKs
+
+If using the iOS or Android SDKs, you will provide the Streem Token to the client, and pass to the SDK via `Streem.identify()`.  More
+details can be found in documentation of the individual SDKs
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+This repo is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
