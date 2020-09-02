@@ -1,6 +1,6 @@
-# streem-sdk-node
+# Streem SDK for Node.JS
 
-Server-side node library for interacting with the Streem API, and generation of Streem Tokens for use in client SDKs or Embedded SSO.
+Server-side Node.JS library for interacting with the Streem API, and generation of Streem Tokens for use in client SDKs or Embedded SSO.
 
 ## Installation
 
@@ -27,7 +27,7 @@ import Streem from "@streem/sdk-node"
 Then initialize the library with your API Key ID and Secret:
 
 ```typescript
-    Streem.init(apiKeyId, apiKeySecret)
+Streem.init(apiKeyId, apiKeySecret)
 ```
 
 ### Streem Tokens
@@ -35,25 +35,25 @@ Then initialize the library with your API Key ID and Secret:
 To create a Streem Token, first create a `TokenBuilder`:
 
 ```typescript
-    const builder = new Streem.TokenBuilder()
+const builder = new Streem.TokenBuilder()
 ```
 
 Then specify the details for the currently logged-in user:
 ```typescript
-    const user = // your logged in user
+const user = // your logged in user
 
-    // required
-    builder.userId = user.id
-    
-    // recommended
-    builder.name = user.name
-    builder.email = user.email
-    builder.avatarUrl = user.avatar
+// required
+builder.userId = user.id
+
+// recommended
+builder.name = user.name
+builder.email = user.email
+builder.avatarUrl = user.avatar
 ```
 
 Finally, call `build()` to generate the token string:
 ```typescript
-    const token = builder.build()
+const token = builder.build()
 ```
 
 #### Embedded SSO
@@ -66,7 +66,7 @@ by appending `#token=...` with your token.
 For example, to create an `iframe` to the root page in Streem, you might have:
 
 ```html
-    <iframe src="https://{company-code}.streempro.app#token={token}"/>
+<iframe src="https://{company-code}.streempro.app#token={token}"/>
 ```
 
 Be sure to substitute `{company-code}` and `{token}` for the correct values.

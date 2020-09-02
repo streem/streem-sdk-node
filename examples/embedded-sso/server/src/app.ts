@@ -5,7 +5,7 @@ import { config } from 'dotenv';
 import Streem from '@streem/sdk-node';
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3131;
 
 config();
 
@@ -24,7 +24,6 @@ app.post('/token', async (req, res, next) => {
 const apiKeyId = process.env.API_KEY_ID || '';
 const apiKeySecret = process.env.API_KEY_SECRET || '';
 const apiEnvironment = process.env.API_ENVIRONMENT || 'prod-us';
-const oneHour = 60 * 60 * 1000;
 
 if (!apiKeyId || !apiKeySecret) {
     console.log('Please copy .env.template to .env, and process your API Key ID and Secreet');
@@ -39,11 +38,17 @@ async function createToken(userId: string, name: string, email: string, avatarUr
     builder.name = name;
     builder.email = email;
     builder.avatarUrl = avatarUrl;
-    builder.expirationMs = oneHour;
 
     return await builder.build();
 }
 
 app.listen(PORT, () => {
     console.log(`⚡️[server]: Server is running at https://localhost:${PORT}`);
+});
+
+app.on('error', (err: any) => {
+    if(err.code === 'EADDRINUSE') {
+        console.error(`Unable to listen on PORT ${PORT}, the port is already busy.`);
+        process.exit(1);
+    }
 });

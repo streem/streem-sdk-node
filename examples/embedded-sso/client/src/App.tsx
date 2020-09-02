@@ -67,7 +67,7 @@ export default function App() {
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         setRequesting(true);
-        const response = await fetch('http://localhost:3000/token', {
+        const response = await fetch('http://localhost:3131/token', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
@@ -179,7 +179,7 @@ export default function App() {
                         {iframeSource !== defaultIframeSource && !requesting && (
                             <Fade in timeout={1000}>
                                 <Alert severity="success" className={classes.alert}>
-                                    <AlertTitle>iFrame URL</AlertTitle>
+                                    <AlertTitle>iFrame URL - <a href={iframeSource} target="_blank" rel="noopener noreferrer">Open in new tab</a></AlertTitle>
                                     {iframeSource}
                                 </Alert>
                             </Fade>

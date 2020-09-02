@@ -4,10 +4,9 @@ The Embedded SSO app demonstrates how to use the Streem SDK to generate a
 token that will automatically log your users into the Streem Web portal.
 
 ## Server
-First, create your `server/.env` file:
+In the `server` directory, first create your `.env` file:
 
 ```
-cd server
 cp .env.template .env
 ``` 
 
@@ -16,17 +15,15 @@ Then edit the `.env` file with your API Key ID and Secret
 Next, install dependencies and start the server:
 
 ```
-cd server
 yarn && yarn start
 ```
 
 
 ## Client
 
-With the server started above, you can simply install dependencies and start the client:
+With the server started above, go to the `client` directory, and simply install dependencies and start the client:
  
 ```
-cd client
 yarn && yarn start
 ```
 
