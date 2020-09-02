@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
   integrity sha512-9NET910DNaIPngYnLLPeg+Ogzqsi9uM4mSboU5y6p8S5DzMTVEsJZrawi+BoDNUVBa2DhJqQYUFvMDfgU062LQ==
 
-"@streem/sdk-node@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@streem/sdk-node/-/sdk-node-0.0.1.tgz#2851f26f325bd23d8dab813f44cdc4fc46496502"
-  integrity sha512-K8DIiDAzuw/PmGF2RWQp+tHMY7tKOSTJ4lY68rdtRXo8XUaEHpqGmiJaD07daB9EM7vb3XZHsyczxwjFdK+MKw==
+"@streem/sdk-node@0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@streem/sdk-node/-/sdk-node-0.0.2.tgz#9bcdfe2c5689ccad855d1e027ba9bf41dd5de12d"
+  integrity sha512-iCSr6rW2WyWVO+YAZAq1WTfv+u+l7K+HRa66Qe2QKFuHQFDz7/0UhCInfyZ3Fg34yeUY4YRXTT+gdQk/hTIWTg==
   dependencies:
     node-jose "^1.1.4"
 

@@ -49,6 +49,10 @@ builder.userId = user.id
 builder.name = user.name
 builder.email = user.email
 builder.avatarUrl = user.avatar
+
+// optional
+builder.tokenExpirationMs = ... // Determines how long this token is valid for starting a session (default 5 minutes)
+builder.sessionExpirationMs = ... // Once the session has started, how long can the user remain logged in (default 4 hours)  
 ```
 
 Finally, call `build()` to generate the token string:
