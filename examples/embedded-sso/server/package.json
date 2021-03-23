@@ -6,7 +6,7 @@
     "start": "nodemon src/app.ts"
   },
   "dependencies": {
-    "@streem/sdk-node": "0.0.2",
+    "@streem/sdk-node": "^0.2.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "~4.16.1"
