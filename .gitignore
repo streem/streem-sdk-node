@@ -106,3 +106,6 @@ dist
 # IntelliJ
 .idea
 *.iml
+
+build
+.nyc_output
