@@ -4,16 +4,10 @@ Server-side Node.JS library for interacting with the Streem API, and generation 
 
 ## Installation
 
-Add the Streem SDK dependency to your project
+Add the Streem SDK dependency to your project. Yarn is required:
 
 ```
 yarn add @streem/sdk-node
-```
-
-Or
-
-```
-npm install @streem/sdk-node
 ```
 
 ## Usage
