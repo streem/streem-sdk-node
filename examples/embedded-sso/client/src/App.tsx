@@ -8,7 +8,6 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Fade from '@material-ui/core/Fade';
 import { Alert, AlertTitle } from '@material-ui/lab';
 
 const useStyles = makeStyles(theme => ({
@@ -63,7 +62,7 @@ export default function App() {
     const [apiEnvironment, setApiEnvironment] = useState('sandbox');
     const [requesting, setRequesting] = useState(true);
 
-    let defaultIframeSource = `https://${companyCode}.swa.${apiEnvironment}.streem.cloud/logout-success`;
+    let defaultIframeSource = `about:blank`;
     const [editableIframeSource, setEditableIframeSource] = useState(defaultIframeSource);
     const [iframeSource, setIframeSource] = useState(defaultIframeSource);
 
@@ -81,7 +80,7 @@ export default function App() {
         });
         const json = await response.json();
         setEditableIframeSource(
-            `https://${companyCode}.swa.${apiEnvironment}.streem.cloud#token=${json.token}`,
+            `https://${companyCode}.swaga.${apiEnvironment}.streem.cloud/embed#token=${json.token}`,
         );
         setRequesting(false);
     };
