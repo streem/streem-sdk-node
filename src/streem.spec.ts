@@ -14,6 +14,7 @@ test('TokenBuilder', async t => {
     builder.name = 'Test';
     builder.avatarUrl = 'https://tr.rbxcdn.com/680e8cd3b087d56459a92b93120b152d/352/352/Avatar/Png';
     builder.email = 'test@streem.pro';
+    builder.reservationSid = 'rsv_abc123';
 
     const tenMinutes = 10 * 60 * 1000;
     builder.tokenExpirationMs = tenMinutes;
@@ -30,6 +31,7 @@ test('TokenBuilder', async t => {
     t.is(jwt.picture, `https://tr.rbxcdn.com/680e8cd3b087d56459a92b93120b152d/352/352/Avatar/Png`);
     t.is(jwt.email, `test@streem.pro`);
     t.is(jwt.aud, `https://api.test.streem.cloud/`);
+    t.is(jwt['streem:reservation_sid'], `rsv_abc123`);
 
     // Expiration dates should be within one second
     const expectedTokenExpirationSeconds = Math.round((Date.now() + tenMinutes) / 1000.0);

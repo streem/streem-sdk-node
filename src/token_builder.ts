@@ -15,6 +15,7 @@ export class TokenBuilder {
     public email?: string;
     public tokenExpirationMs: number = fiveMinutes;
     public sessionExpirationMs: number = fourHours;
+    public reservationSid?: string;
 
     public async build(): Promise<string> {
         const apiKeyId = config.apiKeyId;
@@ -31,7 +32,7 @@ export class TokenBuilder {
         const keyAsJson = Buffer.from(apiKeySecret, 'base64');
         const key = await JWK.asKey(keyAsJson, 'json');
 
-        const claim = {
+        const claim: any = {
             aud: `https://api.${apiEnvironment}.streem.cloud/`,
             email: this.email,
             exp: Math.round((Date.now() + this.tokenExpirationMs) / 1000),
@@ -42,6 +43,10 @@ export class TokenBuilder {
             picture: this.avatarUrl,
             sub: `${this.userId}`,
         };
+
+        if (this.reservationSid) {
+            claim['streem:reservation_sid'] = this.reservationSid;
+        }
 
         const token = await JWS.createSign({ alg: 'ES256', format: 'compact' }, key)
             .update(JSON.stringify(claim))
