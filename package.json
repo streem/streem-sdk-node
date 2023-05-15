@@ -22,7 +22,7 @@
         "node": ">=10"
     },
     "dependencies": {
-        "node-jose": "^2.0.0"
+        "node-jose": "^2.2.0"
     },
     "devDependencies": {
         "@istanbuljs/nyc-config-typescript": "^0.1.3",
