@@ -1,3 +1,7 @@
+### 0.3.1
+
+* Upgrading `node-jose` to 2.2.x
+
 ### 0.3.0
 
 * Adding `reservation_sid` claim to token builder
